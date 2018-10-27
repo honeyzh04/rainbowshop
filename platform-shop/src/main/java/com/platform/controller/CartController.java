@@ -42,7 +42,7 @@ public class CartController {
 
 		List<CartEntity> cartList = cartService.queryList(query);
 		int total = cartService.queryTotal(query);
-		
+		System.err.println( cartList );
 		PageUtils pageUtil = new PageUtils(cartList, total, query.getLimit(), query.getPage());
 		
 		return R.ok().put("page", pageUtil);

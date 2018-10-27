@@ -51,7 +51,7 @@ public class UserRealm extends AuthorizingRealm {
                 permsSet.addAll(Arrays.asList(perms.trim().split(",")));
             }
         }
-
+        System.err.println("用户权限"+permsSet);
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.setStringPermissions(permsSet);
         return info;

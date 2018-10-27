@@ -6,10 +6,14 @@ import sun.misc.BASE64Encoder;
 import java.io.UnsupportedEncodingException;
 
 /**
- * 作者: @author Harmon <br>
- * 时间: 2017-08-11 16:17<br>
- * 描述: Base64 <br>
- */
+     *加密 解密
+     * @ClassName:      Base64
+     * @Description:
+     * @Author:         zhaoh
+     * @CreateDate:     2018/10/24 15:04
+     * @UpdateDate:     2018/10/24 15:04
+     * @Version:        1.0
+     */
 public class Base64 {
     // 加密
     public static String encode(String str) {

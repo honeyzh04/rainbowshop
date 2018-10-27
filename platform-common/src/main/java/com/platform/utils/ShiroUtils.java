@@ -6,12 +6,14 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 
 /**
- * Shiro工具类
- *
- * @author lipengjun
- * @email 939961241@qq.com
- * @date 2016年11月12日 上午9:49:19
- */
+     *Shiro工具类
+     * @ClassName:      ShiroUtils
+     * @Description:
+     * @Author:         zhaoh
+     * @CreateDate:     2018/10/24 11:37
+     * @UpdateDate:     2018/10/24 11:37
+     * @Version:        1.0
+     */
 public class ShiroUtils {
 
     public static Session getSession() {

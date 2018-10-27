@@ -1,4 +1,4 @@
-const root = '/platform/api/';
+const root = '/rainbowshop/api/';
 
 // const API_BASE_URL = 'http://fly2you.cn' + root;
 const API_BASE_URL = 'http://localhost:8080' + root;
