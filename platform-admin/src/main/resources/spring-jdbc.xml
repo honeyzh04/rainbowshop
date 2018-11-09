@@ -92,8 +92,9 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="configLocation" value="classpath:mybatis.xml"/>
         <property name="dataSource" ref="dataSource"/>
+        <!--<property name="mapperLocations" value="classpath:com/platform/dao/*.xml"/>-->
     </bean>
-
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.platform.dao,com.platform.*.dao"/>
     </bean>

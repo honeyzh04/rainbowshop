@@ -31,7 +31,7 @@ var vm = new Vue({
     },
     methods: {
         query: function () {
-            vm.reload();
+            vm.jsonReader.reload();
         },
         reload: function (event) {
             vm.showList = true;

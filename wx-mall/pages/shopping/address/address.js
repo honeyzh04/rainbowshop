@@ -27,7 +27,10 @@ Page({
       }
     });
   },
+  //更新地址
   addressAddOrUpdate (event) {
+    var a = event.currentTarget.dataset.addressId;
+    console.log("11"+a);
     wx.navigateTo({
       url: '/pages/shopping/addressAdd/addressAdd?id=' + event.currentTarget.dataset.addressId
     });
@@ -36,13 +39,16 @@ Page({
 
     try {
       wx.setStorageSync('addressId', event.currentTarget.dataset.addressId);
+      console.log("2"+event.currentTarget.dataset.addressId)
     } catch (e) {
 
     }
 
     //选择该收货地址
     wx.navigateBack({
-      url: '/pages/shopping/checkout/checkout'
+      //url: '/pages/shopping/checkout/checkout'
+      delta: 1
+
     });
   },
   onHide: function () {

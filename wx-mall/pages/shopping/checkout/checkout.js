@@ -22,24 +22,33 @@ Page({
     couponCode: '',
     buyType: ''
   },
-  onLoad: function (options) {
-
+    //加载页面执行
+    onLoad: function (options) {
+    console.log("ad"+options)
     // 页面初始化 options为页面跳转所带来的参数
     if (options.isBuy!=null) {
       this.data.isBuy = options.isBuy
+      console.log("ad1" + this.data.isBuy)
     }
     this.data.buyType = this.data.isBuy?'buy':'cart'
+      console.log("ad2" + this.data.buyType)
     //每次重新加载界面，清空数据
     app.globalData.userCoupon = 'NO_USE_COUPON'
     app.globalData.courseCouponCode = {}
   },
-  
+  //加载页面数据
   getCheckoutInfo: function () {
     let that = this;
     var url = api.CartCheckout
+    console.log("17" +url);
+    console.log(url);
     let buyType = this.data.isBuy ? 'buy' : 'cart'
-    util.request(url, { addressId: that.data.addressId, couponId: that.data.couponId, type: buyType }).then(function (res) {
+    console.log("ad3" + buyType)
+    console.log("13"+that.data.addressId);
+    util.request(url, { addressId: that.data.addressId, couponId: that.data.couponId, type:buyType }, 'POST', 'application/json').then(function (res) {
       if (res.errno === 0) {
+        console.log("15" + that.data.addressId);
+        console.log("14" + res.data.checkedAddress);
         that.setData({
           checkedGoodsList: res.data.checkedGoodsList,
           checkedAddress: res.data.checkedAddress,
@@ -92,10 +101,11 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
-    this.getCheckoutInfo();
+
     
     try {
       var addressId = wx.getStorageSync('addressId');
+      console.log("12"+addressId);
       if (addressId) {
         this.setData({
           'addressId': addressId
@@ -104,6 +114,7 @@ Page({
     } catch (e) {
       // Do something when catch error
     }
+      this.getCheckoutInfo();
   },
 
   /**

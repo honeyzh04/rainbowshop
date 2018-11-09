@@ -14,7 +14,7 @@ page{
 	flex-direction: column;
 	padding: 50rpx 0;
 	align-items: center;
-	background: #333;
+	background: rgb(245, 198, 69);
   width: 750rpx;
 }
 
@@ -186,3 +186,9 @@ page{
   line-height: normal;
   display: inline;
 }
+.company {
+ 	  font-family: STXingkai;
+ 	  font-size:20rpx;
+ 	 text-align:center;
+ 	  margin-top:50px;
+ 	}

@@ -56,8 +56,9 @@
     <!-- Velocity视图解析器    默认视图  -->
     <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
         <property name="contentType" value="text/html;charset=UTF-8"/>
-        <property name="viewNames" value="*.html"/>
-        <property name="suffix" value=""/>
+      <property name="viewNames" value="*.html"/>
+        <!--<property name="prefix" value="/WEB-INF/page/shop/"/>-->
+        <property name="suffix" value=""/> <!-- 视图文件的后缀名 -->
         <property name="dateToolAttribute" value="date"/>
         <property name="numberToolAttribute" value="number"/>
         <property name="toolboxConfigLocation" value="/WEB-INF/velocity-toolbox.xml"/>
@@ -69,7 +70,7 @@
     <!-- 配置VelocityConfigurer，负责在spring中设置Velocity引擎。通过属性resourceLoaderPath告诉Velocity到哪里寻找它的模板。
        通常将模板放到WEB-INF下的某个子目录下，可以保证这些模板不能被直接访问。-->
     <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-        <property name="resourceLoaderPath" value="/WEB-INF/page/"/>
+        <property name="resourceLoaderPath" value="/WEB-INF/page/"/>  <!--模板位置 -->
         <property name="velocityProperties">
             <props>
                 <prop key="input.encoding">UTF-8</prop>

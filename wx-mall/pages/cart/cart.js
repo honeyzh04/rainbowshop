@@ -217,6 +217,7 @@ Page({
     let that = this;
 
     var checkedGoods = this.data.cartGoods.filter(function (element, index, array) {
+      console.log("下单"+checkedGoods);
       if (element.checked == true) {
         return true;
       } else {
@@ -236,7 +237,7 @@ Page({
   deleteCart: function () {
     //获取已选择的商品
     let that = this;
-
+    console.log("下单1" );
     let productIds = this.data.cartGoods.filter(function (element, index, array) {
       if (element.checked == true) {
         return true;

@@ -360,6 +360,7 @@ page{
     width: auto;
     margin: 33rpx 18rpx;
     font-size: 29rpx;
+   
 }
 
 .cart-bottom .checkout{

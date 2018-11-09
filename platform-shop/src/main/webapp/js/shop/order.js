@@ -104,7 +104,7 @@ $(function () {
             {
                 label: '操作', width: 160, align: 'center', sortable: false, formatter: function (value, col, row) {
                     return '<button class="btn btn-outline btn-info" onclick="vm.lookDetail(' + row.id + ')"><i class="fa fa-info-circle"></i>&nbsp;详情</button>' +
-                        '<button class="btn btn-outline btn-primary" style="margin-top: 10px;" onclick="vm.printDetail(' + row.id + ')"><i class="fa fa-print"></i>&nbsp;打印</button>';
+                        '<button class="btn btn-outline btn-primary"  onclick="vm.printDetail(' + row.id + ')"><i class="fa fa-print"></i>&nbsp;&nbsp;打印</button>';
                 }
             }
         ]

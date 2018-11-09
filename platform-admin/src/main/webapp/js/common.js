@@ -2,6 +2,7 @@
 $(window).on('resize', function () {
     var $content = $('#mainApp');
     $content.height($(this).height());
+
     $content.find('iframe').each(function () {
         $(this).height($content.height() - 150);
     });

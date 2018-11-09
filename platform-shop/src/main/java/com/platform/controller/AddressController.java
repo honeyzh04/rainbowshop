@@ -5,6 +5,7 @@ import com.platform.service.AddressService;
 import com.platform.utils.PageUtils;
 import com.platform.utils.Query;
 import com.platform.utils.R;
+import net.sf.json.JSONArray;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,9 +29,10 @@ public class AddressController {
     /**
      * 查看列表
      */
-    @RequestMapping("/list")
+     @RequestMapping("/list")
     @RequiresPermissions("address:list")
     public R list(@RequestParam Map<String, Object> params) {
+        System.err.println("地址"+params);
         //查询列表数据
         Query query = new Query(params);
 
@@ -39,6 +41,7 @@ public class AddressController {
 
         PageUtils pageUtil = new PageUtils(addressList, total, query.getLimit(), query.getPage());
 
+        System.err.println(JSONArray.fromObject(R.ok().put("page", pageUtil)).toString());
         return R.ok().put("page", pageUtil);
     }
 

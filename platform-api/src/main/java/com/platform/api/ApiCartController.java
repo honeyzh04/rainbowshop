@@ -10,6 +10,7 @@ import com.platform.util.ApiBaseAction;
 import com.qiniu.util.StringUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.log4j.xml.SAXErrorHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -393,18 +394,26 @@ public class ApiCartController extends ApiBaseAction {
     /**
      * 订单提交前的检验和填写相关订单信息
      */
+    @ResponseBody
     @ApiOperation(value = "订单提交前的检验和填写相关订单信息")
     @PostMapping("checkout")
-    public Object checkout(@LoginUser UserVo loginUser, Integer couponId, @RequestParam(defaultValue = "cart") String type) {
+    public Object checkout(@LoginUser UserVo loginUser) {
+        JSONObject addressJson = this.getJsonRequest();
         Map<String, Object> resultObj = new HashMap();
         //根据收货地址计算运费
-
+        String addressId = addressJson.getString("addressId");
+        String type = addressJson.getString("type");
+        String couponID = addressJson.getString("couponId");
+        Integer couponId = 0;
+        if (couponID != null && couponID.length() != 0) {
+            couponId = Integer.parseInt(couponID);
+        }
         BigDecimal freightPrice = new BigDecimal(0.00);
         //默认收货地址
         Map param = new HashMap();
+        param.put("addressId", addressId);
         param.put("user_id", loginUser.getUserId());
         List addressEntities = addressService.queryList(param);
-
         if (null == addressEntities || addressEntities.size() == 0) {
             resultObj.put("checkedAddress", new AddressVo());
         } else {
@@ -414,6 +423,7 @@ public class ApiCartController extends ApiBaseAction {
         ArrayList checkedGoodsList = new ArrayList();
         BigDecimal goodsTotalPrice;
         if (type.equals("cart")) {
+            System.err.println("购物车");
             Map<String, Object> cartData = (Map<String, Object>) this.getCart(loginUser);
 
             for (CartVo cartEntity : (List<CartVo>) cartData.get("cartList")) {
@@ -423,6 +433,7 @@ public class ApiCartController extends ApiBaseAction {
             }
             goodsTotalPrice = (BigDecimal) ((HashMap) cartData.get("cartTotal")).get("checkedGoodsAmount");
         } else { // 是直接购买的
+            System.err.println("直接购买");
             BuyGoodsVo goodsVO = (BuyGoodsVo) J2CacheUtils.get(J2CacheUtils.SHOP_CACHE_NAME, "goods" + loginUser.getUserId() + "");
             ProductVo productInfo = productService.queryObject(goodsVO.getProductId());
             //计算订单的费用

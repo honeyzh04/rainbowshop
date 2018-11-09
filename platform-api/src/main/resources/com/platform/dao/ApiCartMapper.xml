@@ -3,6 +3,7 @@
 
 <mapper namespace="com.platform.dao.ApiCartMapper">
 
+
     <!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.platform.entity.CartVo" id="cartMap">
         <result property="id" column="id"/>

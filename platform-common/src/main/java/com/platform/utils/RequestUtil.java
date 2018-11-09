@@ -48,6 +48,7 @@ public class RequestUtil {
         if (map.get(Constant.SORT_ORDER) != null) {
             map.put(Constant.SORT_ORDER, "asc");
         }
+        System.err.println("请求参数"+map);
         return map;
     }
 

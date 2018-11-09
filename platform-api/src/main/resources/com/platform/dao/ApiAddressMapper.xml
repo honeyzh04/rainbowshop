@@ -28,6 +28,10 @@
             <if test="user_id != null">
                 and user_id = #{user_id}
             </if>
+            <if test=" addressId != null">
+                and id = #{ addressId}
+            </if>
+
         </where>
         <choose>
             <when test="sidx != null and sidx.trim() != ''">

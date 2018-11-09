@@ -50,6 +50,13 @@
             <version>1.0.0</version>
             <type>war</type>
         </dependency>
+        <dependency>
+            <groupId>com.platform</groupId>
+            <artifactId>platform-mp</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -82,6 +89,7 @@
                             <groupId>com.platform</groupId>
                             <artifactId>platform-shop</artifactId>
                         </overlay>
+
 
                         <!-- 待添加其他要合并的 web 模块 -->
                     </overlays>

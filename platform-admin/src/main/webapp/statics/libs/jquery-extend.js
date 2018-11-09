@@ -2,7 +2,9 @@
 
     /*********************************对jQuery类型原型扩展********************************************/
     jQuery.extend($.prototype, {
+
         Grid: function (options) {
+
             //分页Id
             var pager = this.attr('id') + 'Pager';
             this.after('<div id="' + pager + '"></div>');
@@ -33,6 +35,7 @@
                 pager: "#" + pager
             };
             var param = $.extend(this.defaults, options);
+
             this.jqGrid(param);
         }
     });

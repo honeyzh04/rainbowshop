@@ -35,6 +35,7 @@ public class AddressServiceImpl implements AddressService {
 
             }
         }
+
         return list;
     }
 
