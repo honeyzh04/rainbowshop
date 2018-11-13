@@ -80,6 +80,11 @@ public class ApiAddressController extends ApiBaseAction {
             entity.setTelNumber(addressJson.getString("telNumber"));
             entity.setIs_default(addressJson.getInteger("is_default"));
         }
+     int id_default=addressJson.getInteger("is_default");
+
+        if (id_default==1) {
+            addressService.editdeDault(entity);
+        }
         if (null == entity.getId() || entity.getId() == 0) {
             entity.setId(null);
             addressService.save(entity);

@@ -34,7 +34,9 @@ public class ApiAddressService {
         addressDao.save(address);
     }
 
-
+    public void editdeDault(AddressVo address) {
+        addressDao.editdeDault(address);
+    }
     public void update(AddressVo address) {
         addressDao.update(address);
     }

@@ -1,9 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <!-- 声明将父项目的坐标 -->
     <parent>
         <groupId>com.platform</groupId>
-        <artifactId>platform</artifactId>
+        <artifactId>rainbowshop</artifactId>
         <version>1.0.0</version>
     </parent>
 
@@ -25,7 +26,7 @@
             <version>${kaptcha.version}</version>
         </dependency>
     </dependencies>
-
+    <!--<Profiles>定义不同环境的参数变量-->
     <profiles>
         <profile>
             <id>dev</id>
@@ -45,15 +46,31 @@
     </profiles>
 
     <build>
+        <!--项目脚本源码目录，该目录和源码目录不同， 绝大多数情况下，该目录下的内容会被拷贝到输出目录(因为脚本是被解释的，而不是被编译的)。 -->
         <scriptSourceDirectory>src/main/java</scriptSourceDirectory>
+        <!--项目相关的所有资源路径列表，例如和项目相关的配置文件、属性文件，这些资源被包含在最终的打包文件里。 -->
+       <!-- resources，build过程中涉及的资源文件
+        targetPath，资源文件的目标路径
+        filtering，构建过程中是否对资源进行过滤，默认false
+        directory，资源文件的路径，默认位于${basedir}/src/main/resources/目录下
+        includes，一组文件名的匹配模式，被匹配的资源文件将被构建过程处理
+        excludes，一组文件名的匹配模式，被匹配的资源文件将被构建过程忽略。同时被includes和excludes匹配的资源文件，将被忽略。
+        filters，给出对资源文件进行过滤的属性文件的路径，默认位于${basedir}/src/main/filters/目录下。属性文件中定义若干键值对。在构建过程中，对于资源文件中出现的变量（键），将使用属性文件中该键对应的值替换。
+        testResources，test过程中涉及的资源文件，默认位于${basedir}/src/test/resources/目录下-->
         <resources>
             <resource>
+                <!--描述了资源的目标路径。该路径相对target/classes目录（例如${project.build.outputDirectory}）。 -->
+                <!--举个例子，如果你想资源在特定的包里(org.apache.maven.messages)，你就必须该元素设置为org/apache/maven/messages。 -->
+                <!--然而，如果你只是想把资源放到源码目录结构里，就不需要该配置。 -->
+                 <!--    <targetPath>resources</targetPath>-->
                 <directory>src/main/resources/${env}</directory>
+                <!--是否使用参数值代替参数名。参数值取自properties元素或者文件里配置的属性，文件在filters元素里列出。 -->
                 <filtering>true</filtering>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
+                <!--排除的模式列表 如果<include>与<exclude>划定的范围存在冲突，以<exclude>为准 -->
                 <excludes>
                     <exclude>dev/*</exclude>
                     <exclude>prod/*</exclude>
@@ -62,14 +79,30 @@
             <resource>
                 <directory>src/main/java</directory>
                 <filtering>true</filtering>
+                <!--包含的模式列表 -->
                 <includes>
                     <include>**/*.xml</include>
                 </includes>
             </resource>
         </resources>
+       <!-- 给出构建过程中所用到的插件
+         groupId
+        artifactId
+        version
+        extensions，是否加载该插件的扩展，默认false
+        inherited，该插件的configuration中的配置是否可以被（继承该POM的其他Maven项目）继承，默认true
+        configuration，该插件所需要的特殊配置，在父子项目之间可以覆盖或合并
+        dependencies，该插件所特有的依赖类库
+        executions，该插件的某个goal（一个插件中可能包含多个goal）的执行方式。一个execution有如下设置：
+        id，唯一标识
+        goals，要执行的插件的goal（可以有多个），如<goal>run</goal>
+        phase，插件的goal要嵌入到Maven的phase中执行，如verify
+        inherited，该execution是否可被子项目继承
+        configuration，该execution的其他配置参数-->
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
+                <!--作为DOM对象的配置,配置项因插件而异 -->
                 <configuration>
                     <warSourceDirectory>src/main/webapp</warSourceDirectory>
                     <failOnMissingWebXml>false</failOnMissingWebXml>

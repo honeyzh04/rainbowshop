@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>platform</artifactId>
+        <artifactId>rainbowshop</artifactId>
         <groupId>com.platform</groupId>
         <version>1.0.0</version>
     </parent>
@@ -60,8 +60,11 @@
     </dependencies>
 
     <build>
+        <!--源代码文件夹-->
         <sourceDirectory>src/main/java</sourceDirectory>
+        <!-- 产生的构件的文件名，默认值是${artifactId}-${version}。 -->
         <finalName>platform</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -77,9 +80,11 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.6</version>
                 <configuration>
+                    <!--打包的时候时常要忽略的文件-->
                     <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
+                    <!--  告诉maven，我真的不需要web.xml-->
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-
+                   <!-- 合并war包-->
                     <overlays>
                         <overlay>
                             <groupId>com.platform</groupId>
@@ -89,8 +94,6 @@
                             <groupId>com.platform</groupId>
                             <artifactId>platform-shop</artifactId>
                         </overlay>
-
-
                         <!-- 待添加其他要合并的 web 模块 -->
                     </overlays>
                 </configuration>

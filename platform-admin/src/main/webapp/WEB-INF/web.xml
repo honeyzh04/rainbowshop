@@ -4,6 +4,11 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
   http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1" metadata-complete="false">
+    <!--
+    作用：该元素用来声明应用范围(整个WEB项目)内的上下文初始化参数。
+        param-name 设定上下文的参数名称。必须是唯一名称
+        param-value 设定的参数名称的值-->
+   <!-- Spring 配置文件-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
@@ -17,7 +22,7 @@
         <param-name>log4jRefreshInterval</param-name>
         <param-value>600000</param-value>
     </context-param>
-
+  <!--  属性是web项目的绝对路径，默认值是webApp.root,-->
     <context-param>
         <param-name>webAppRootKey</param-name>
         <param-value>webPath</param-value>

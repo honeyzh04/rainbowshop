@@ -26,12 +26,18 @@
         select * from nideshop_address
         <where>
             <if test="user_id != null">
-                and user_id = #{user_id}
+            and user_id = #{user_id}
             </if>
             <if test=" addressId != null">
-                and id = #{ addressId}
+                <choose>
+                    <when test=" addressId != 0">
+                        and id = #{ addressId}
+                    </when>
+                    <otherwise>
+                        and is_default=1
+                    </otherwise>
+                </choose>
             </if>
-
         </where>
         <choose>
             <when test="sidx != null and sidx.trim() != ''">
@@ -78,18 +84,26 @@
     <update id="update" parameterType="com.platform.entity.AddressVo">
         update nideshop_address
         <set>
-            <if test="userId != null">`user_id` = #{userId}, </if>
-            <if test="userName != null">`user_name` = #{userName}, </if>
-            <if test="telNumber != null">`tel_number` = #{telNumber}, </if>
-            <if test="postalCode != null">`postal_Code` = #{postalCode}, </if>
-            <if test="nationalCode != null">`national_Code` = #{nationalCode}, </if>
-            <if test="provinceName != null">`province_Name` = #{provinceName}, </if>
-            <if test="cityName != null">`city_Name` = #{cityName}, </if>
-            <if test="countyName != null">`county_Name` = #{countyName}, </if>
+            <if test="userId != null">`user_id` = #{userId},</if>
+            <if test="userName != null">`user_name` = #{userName},</if>
+            <if test="telNumber != null">`tel_number` = #{telNumber},</if>
+            <if test="postalCode != null">`postal_Code` = #{postalCode},</if>
+            <if test="nationalCode != null">`national_Code` = #{nationalCode},</if>
+            <if test="provinceName != null">`province_Name` = #{provinceName},</if>
+            <if test="cityName != null">`city_Name` = #{cityName},</if>
+            <if test="countyName != null">`county_Name` = #{countyName},</if>
             <if test="detailInfo != null">`detail_Info` = #{detailInfo},</if>
             <if test="is_default != null">`is_default` = #{is_default}</if>
         </set>
         where id = #{id}
+    </update>
+    <update id="editdeDault" parameterType="com.platform.entity.AddressVo">
+        update nideshop_address
+        <set>
+
+            <if test="is_default != null">`is_default` =0</if>
+        </set>
+        where user_id = #{userId} and is_default=1
     </update>
 
     <delete id="delete">

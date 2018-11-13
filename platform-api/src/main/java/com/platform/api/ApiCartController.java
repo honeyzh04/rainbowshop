@@ -413,6 +413,10 @@ public class ApiCartController extends ApiBaseAction {
         Map param = new HashMap();
         param.put("addressId", addressId);
         param.put("user_id", loginUser.getUserId());
+        System.err.println("m默认地址"+addressId);
+      /*  if(addressId.equals(0) && addressId.length()==0){
+            param.put("addressId", addressId);
+        }*/
         List addressEntities = addressService.queryList(param);
         if (null == addressEntities || addressEntities.size() == 0) {
             resultObj.put("checkedAddress", new AddressVo());
