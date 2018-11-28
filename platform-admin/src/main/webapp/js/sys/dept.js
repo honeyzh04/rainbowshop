@@ -49,6 +49,7 @@ var setting = {
             idKey: "deptId",
             pIdKey: "parentId",
             rootPId: -1
+            
         },
         key: {
             url: "nourl"
