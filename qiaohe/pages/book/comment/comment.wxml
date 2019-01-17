@@ -1,0 +1,26 @@
+<view class="goods-comment">
+    <view class="goods-comment-item flex-col" wx:for="{{comment}}" wx:for-index="ckey">
+        <view class="goods-comment-user flex-grow-0 flex-row flex-y-center">
+            <view class="comment-user-pic flex-grow-0">
+                <image src="{{item.avatar_url}}"></image>
+            </view>
+            <view class="comment-user-name flex-grow-0">
+                    {{item.nickname}}
+                </view>
+        </view>
+        <view class="goods-comment-conent flex-grow-1">
+                {{item.content}}
+            </view>
+        <view class="goods-comment-ginfo">
+                    {{item.addtime}}
+                    <block wx:for="{{item.attr}}" wx:for-item="attr">
+                        {{attr.attr_group_name}}:{{attr.attr_name}}
+                    </block>
+        </view>
+        <view class="goods-comment-piclist">
+            <view class="comment-pic-shell" wx:for="{{item.pic_list}}" wx:for-item="pic">
+                <image bindtap="bigToImage" data-index="{{ckey}}" data-url="{{pic}}" src="{{pic}}"></image>
+            </view>
+        </view>
+    </view>
+</view>

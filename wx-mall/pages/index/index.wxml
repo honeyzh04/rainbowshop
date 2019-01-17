@@ -1,6 +1,34 @@
 
 <!--index.wxml-->
 <view class="container">
+
+  <view class="scrolltxt">
+    <view class="marquee_box">
+      <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
+        <text>{{text}}</text>
+        <text style="margin-right:{{marquee_margin}}px;"></text>
+        <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>        
+      </view>
+    </view>
+    </view>
+
+
+    <view class="notice flex-row"style="color:#ffffff;background-color:#f67f79">
+        <view class="flex-grow-0 flex-y-center notice-a">
+            <image src="https://malldemo.zjhejiang.com/web/statics/images/home-page/icon-notice.png"style="width:15px;height:15px;margin-right:10px;"></image>
+            <view>公告</view>
+        </view>
+        <view class="flex-grow-1 notice-box">
+            <view class="notice-content">
+                <view style="display: inline-block;">禾匠生鲜全场感恩大促，满百包邮！前100名送水果！</view>
+            </view>
+        </view>
+        <view class="flex-grow-0 flex-y-center notice-b">
+         <image src="/images/icon-notice-jiantou.png"style="width:4px;height:7px;margin-left:13px;"></image>
+        </view>
+    </view>
+
+
   <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
     <swiper-item wx:for="{{banner}}" wx:key="{{item.id}}">
       <navigator url="{{item.link}}">

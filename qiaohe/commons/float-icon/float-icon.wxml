@@ -1,0 +1,9 @@
+<view class="float-icon" direction="all">
+    <view bindtap="to_dial" class="dial" style="background-image:url('{{store.dial_pic}}'); background-size: 100rpx 100rpx;" wx:if="{{store.dial==1}}"></view>
+    <navigator hoverClass="none" openType="navigate" url="/pages/web/web?url={{store.option.web_service_url}}" wx:if="{{store.option.web_service}}">
+        <image class="dial" src="{{store.option.web_service}}"></image>
+    </navigator>
+    <button class="float-icon-btn" openType="contact" sessionFrom="{{_user_info.nickname}}|" wx:if="{{store.show_customer_service&&store.show_customer_service==1}}">
+        <image src="{{store.service}}"></image>
+    </button>
+</view>

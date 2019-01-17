@@ -377,3 +377,7 @@
   width: 70rpx;
   height: 70rpx;
 }
+
+.scrolltxt{padding:0 20rpx;background:#f8f8f8;}
+.marquee_box {position:relative;color:#333;height:90rpx;display:block;overflow:hidden;} 
+.marquee_text {white-space: nowrap;position:absolute;top:0;font-size:14px;height:90rpx;line-height:90rpx;}

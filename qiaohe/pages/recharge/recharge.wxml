@@ -1,0 +1,15 @@
+<view class="info">
+    <view class="info-t">充值金额</view>
+    <view class="list flex-row">
+        <view bindtap="click" class="one flex-x-center {{selected==index?'active':''}}" data-index="{{index}}" wx:for="{{list}}">
+            <view wx:if="{{item.send_price>0}}">
+                <view class="flex-x-center one-1">{{item.pay_price}}</view>
+                <view class="flex-x-center one-2">送{{item.send_price}}</view>
+            </view>
+            <view class="flex-y-center" wx:else>
+                <view class="flex-x-center one-1">{{item.pay_price}}</view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="pay" class="recharge-btn flex-x-center flex-y-center">立即充值</view>
+</view>
