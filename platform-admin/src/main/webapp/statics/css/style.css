@@ -7375,7 +7375,7 @@ body.skin-1 {
 }
 
 body.boxed-layout.skin-3 #wrapper {
-    background: #3e2c42;
+    background: #dd4b39;
 }
 
 .skin-3 .nav-header {
@@ -7384,7 +7384,7 @@ body.boxed-layout.skin-3 #wrapper {
 }
 
 .skin-3.mini-navbar .nav-second-level {
-    background: #3e2c42;
+    background: #dd4b39;
 }
 
 .skin-3 .breadcrumb {
@@ -7396,7 +7396,7 @@ body.boxed-layout.skin-3 #wrapper {
 }
 
 .skin-3 .nav > li.active {
-    background: #38283c;
+    background: #dd4b39;
 }
 
 .fixed-nav.skin-3 .navbar-fixed-top {
@@ -7417,7 +7417,7 @@ body.boxed-layout.skin-3 #wrapper {
 }
 
 body.skin-3 {
-    background: #3e2c42;
+    background: #dd4b39;
 }
 
 .skin-3 .navbar-static-top {
@@ -7472,7 +7472,7 @@ body.skin-3 {
 
 .skin-3 .navbar-default .nav > li > a:hover,
 .skin-3 .navbar-default .nav > li > a:focus {
-    background: #38283c;
+    background: #dd4b39;
     color: #fff;
 }
 
@@ -7485,7 +7485,7 @@ body.skin-3 {
 }
 
 .skin-3 .content-tabs {
-    border-bottom: solid 2px #3e2c42;
+    border-bottom: solid 2px #dd4b39;
 }
 
 .skin-3 .nav.nav-tabs > li.active {
@@ -7493,13 +7493,13 @@ body.skin-3 {
 }
 
 .skin-3 .page-tabs a.active {
-    background: #3e2c42;
+    background: #dd4b39;
     color: #fff;
 }
 
 .skin-3 .page-tabs a.active:hover,
 .skin-3 .page-tabs a.active i:hover {
-    background: #38283c;
+    background: #dd4b39;
     color: #fff;
 }
 
