@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 商品产品
  * Controller
  *
  * @author lipengjun

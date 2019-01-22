@@ -41,7 +41,7 @@ let vm = new Vue({
         },
         goodss: [],
         attribute: [],
-        color: [], guige: [], weight: [],
+         color: [], guige: [], weight: [],
         colors: [],
         guiges: [],
         weights: [],

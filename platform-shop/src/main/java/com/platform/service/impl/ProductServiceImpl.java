@@ -1,20 +1,23 @@
 package com.platform.service.impl;
 
 import com.platform.dao.GoodsSpecificationDao;
-import com.platform.entity.GoodsSpecificationEntity;
-import com.platform.utils.BeanUtils;
-import com.platform.utils.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import com.platform.dao.ProductDao;
+import com.platform.entity.GoodsSpecificationEntity;
 import com.platform.entity.ProductEntity;
 import com.platform.service.ProductService;
+import com.platform.utils.BeanUtils;
+import com.platform.utils.ListCombinationUtil;
+import com.platform.utils.StringUtils;
+import net.sf.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Service实现类
@@ -71,11 +74,22 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public int save(ProductEntity product) {
         int result = 0;
+        JSONObject jsonObject = JSONObject.fromObject( product);
         String goodsSpecificationIds = product.getGoodsSpecificationIds();
         if (!StringUtils.isNullOrEmpty(goodsSpecificationIds)) {
+            List<List<Integer>> inputList = new ArrayList<>();
             String[] goodsSpecificationIdArr = goodsSpecificationIds.split("_");
-            for (int i = 0; i < goodsSpecificationIdArr.length - 1; i++) {
+            for (int i = 0; i < goodsSpecificationIdArr.length ; i++) {
+                if (! goodsSpecificationIdArr[i].equals("")){
                 String[] oneId = goodsSpecificationIdArr[i].split(",");
+                    List<String> list = Arrays.asList(oneId);
+                    List<Integer> codesInteger = list.stream().map(Integer::parseInt).collect(Collectors.toList());
+                    System.out.println(list);
+
+                    inputList.add(codesInteger);
+
+
+        /*            String[] oneId = goodsSpecificationIdArr[i].split(",");
                 String[] twoId = goodsSpecificationIdArr[i + 1].split(",");
                 for (int j = 0; j < oneId.length; j++) {
                     for (int k = 0; k < twoId.length; k++) {
@@ -89,8 +103,22 @@ public class ProductServiceImpl implements ProductService {
                         BeanUtils.copyProperties(product, entity);
                         result += productDao.save(entity);
                     }
+                }*/
+
+
                 }
             }
+
+
+            List<String>  specification= ListCombinationUtil.calculateCombination(inputList);
+            System.err.println(specification);
+           for (String a : specification){
+            product.setGoodsSpecificationIds(a);
+            ProductEntity entity = new ProductEntity();
+            BeanUtils.copyProperties(product, entity);
+            result += productDao.save(entity);
+        }
+
         }
         return result;
     }

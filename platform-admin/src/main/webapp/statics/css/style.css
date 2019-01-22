@@ -7396,7 +7396,7 @@ body.boxed-layout.skin-3 #wrapper {
 }
 
 .skin-3 .nav > li.active {
-    background: #dd4b39;
+    background: #fdfff2;
 }
 
 .fixed-nav.skin-3 .navbar-fixed-top {
@@ -7577,7 +7577,7 @@ body.skin-3 {
     cursor: pointer;
     z-index: 10;
     display: none;
-    color: rgba(255, 255, 255, .3);
+    color:  #fff;
 }
 
 @media (max-width: 350px) {
