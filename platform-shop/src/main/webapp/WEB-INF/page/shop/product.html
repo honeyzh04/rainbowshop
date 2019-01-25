@@ -40,13 +40,12 @@
             </Form-item>
             <Form-item label="商品规格" prop="goodsSpecificationIds">
                 <Checkbox-group v-model="attribute">
-                    <Checkbox :label="1">颜色</Checkbox>
-                    <Checkbox :label="2">规格</Checkbox>
-                    <Checkbox :label="4">重量</Checkbox>
+                    <Checkbox v-for="guigee in guigee" :label="guigee.id" :disabled="true">{{guigee.name}}</Checkbox>
+
                 </Checkbox-group>
             </Form-item>
             <Form-item label="颜色" v-if="attribute.indexOf(1)>-1" prop="color">
-                <i-select v-model="color" filterable multiple>
+                <i-select  v-model="color" filterable multiple>
                     <i-option v-for="color in colors" :value="color.id" :key="color.id">{{color.value}}</i-option>
                 </i-select>
             </Form-item>
@@ -86,5 +85,7 @@
 </div>
 
 <script src="${rc.contextPath}/js/shop/product.js?_${date.systemTime}"></script>
+
+
 </body>
 </html>

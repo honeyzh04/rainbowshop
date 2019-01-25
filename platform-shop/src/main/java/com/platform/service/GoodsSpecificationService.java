@@ -1,5 +1,6 @@
 package com.platform.service;
 
+import com.platform.dao.GoodsSpecificationDao;
 import com.platform.entity.GoodsSpecificationEntity;
 
 import java.util.List;
@@ -69,4 +70,6 @@ public interface GoodsSpecificationService {
      * @return 删除条数
      */
     int deleteBatch(Integer[] ids);
+
+
 }

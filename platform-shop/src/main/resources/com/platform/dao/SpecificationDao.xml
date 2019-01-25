@@ -9,7 +9,18 @@
         <result property="name" column="name"/>
         <result property="sortOrder" column="sort_order"/>
     </resultMap>
-
+	<!--查看商品拥有规格-->
+	<select id="queryGoodsSpecification" resultType="com.platform.entity.SpecificationEntity">
+            SELECT
+           	a.*
+        FROM
+            nideshop_specification a
+        LEFT JOIN nideshop_goods_specification b ON a.id = b.specification_id
+        WHERE
+            b.goods_id = #{goodsId}
+        GROUP BY
+            `name`;
+	</select>
 	<select id="queryObject" resultType="com.platform.entity.SpecificationEntity">
 		select * from nideshop_specification where id = #{value}
 	</select>

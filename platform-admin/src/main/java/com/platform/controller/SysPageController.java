@@ -24,7 +24,7 @@ public class SysPageController {
      */
     @RequestMapping("{module}/{url}.html")
     public String page(@PathVariable("module") String module, @PathVariable("url") String url) {
-        System.err.println("地址1"+module+"地址2"+url);
+        System.err.println("视图地址："+ module + "/" + url + ".html");
 
         return module + "/" + url + ".html";
     }

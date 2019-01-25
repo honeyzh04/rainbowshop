@@ -1,5 +1,6 @@
 package com.platform.controller;
 
+import com.platform.entity.GoodsSpecificationEntity;
 import com.platform.entity.SpecificationEntity;
 import com.platform.service.SpecificationService;
 import com.platform.utils.PageUtils;
@@ -95,6 +96,17 @@ public class SpecificationController {
     public R queryAll(@RequestParam Map<String, Object> params) {
 
         List<SpecificationEntity> list = specificationService.queryList(params);
+
+        return R.ok().put("list", list);
+    }
+
+    /**
+     * 查看所有列表
+     */
+    @RequestMapping("/queryGoodsSpecification")
+    public  R queryGoodsSpecification(String goodsId) {
+
+        List<SpecificationEntity> list =  specificationService.queryGoodsSpecification(goodsId);
 
         return R.ok().put("list", list);
     }

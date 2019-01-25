@@ -1,5 +1,6 @@
 package com.platform.service;
 
+import com.platform.entity.GoodsSpecificationEntity;
 import com.platform.entity.SpecificationEntity;
 
 import java.util.List;
@@ -27,4 +28,10 @@ public interface SpecificationService {
 	void delete(Integer id);
 	
 	void deleteBatch(Integer[] ids);
+	/**
+	 * 查看商品规格
+	 * @param goodsId
+	 * @return
+	 */
+	List<SpecificationEntity>   queryGoodsSpecification(String goodsId);
 }

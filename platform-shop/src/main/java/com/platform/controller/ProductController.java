@@ -45,7 +45,7 @@ public class ProductController {
     }
 
     /**
-     * 查看信息
+     * 查看具体信息
      */
     @RequestMapping("/info/{id}")
     @RequiresPermissions("product:info")

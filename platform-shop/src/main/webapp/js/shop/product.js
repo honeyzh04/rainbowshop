@@ -39,9 +39,11 @@ let vm = new Vue({
         q: {
             goodsName: ''
         },
+        goodsIda:"1155015",
         goodss: [],
         attribute: [],
-         color: [], guige: [], weight: [],
+        guigee: [],
+        color: [], guige: [], weight: [],
         colors: [],
         guiges: [],
         weights: [],
@@ -55,8 +57,14 @@ let vm = new Vue({
             vm.showList = false;
             vm.title = "新增";
             vm.product = {};
-            vm.getGoodss();
+            if (vm.goodsIda) {
+                vm.getGoods();
+            }else {
+                vm.getGoodss();
+            }
+
             vm.type = 'add';
+
         },
         update: function (event) {
             let id = getSelectedRow("#jqGrid");
@@ -102,6 +110,18 @@ let vm = new Vue({
                         async: true,
                         successCallback: function (r) {
                             vm.weights = r.list;
+
+                        }
+                    });
+                    Ajax.request({
+                        url: "../specification/queryGoodsSpecification?goodsId=" + goodsId ,
+                        async: true,
+                        successCallback: function (r) {
+                            vm.guigee = r.list;
+                            vm.guigee.forEach((id, index) => {
+                             vm.attribute.push(id.id)
+                            });
+
                         }
                     });
                 }
@@ -151,6 +171,7 @@ let vm = new Vue({
 
             });
         },
+        //查看具体产品信息
         getInfo: function (id) {
             vm.attribute = [];
             Ajax.request({
@@ -165,17 +186,17 @@ let vm = new Vue({
                         if (index == 0) {
                             vm.color = specificationIds;
                             if (specificationIds.length > 0) {
-                                vm.attribute.push(1);
+                                //vm.attribute.push(1);
                             }
                         } else if (index == 1) {
                             vm.guige = specificationIds;
                             if (specificationIds.length > 0) {
-                                vm.attribute.push(2);
+                              //  vm.attribute.push(2);
                             }
                         } else if (index == 2) {
                             vm.weight = specificationIds;
                             if (specificationIds.length > 0) {
-                                vm.attribute.push(4);
+                               // vm.attribute.push(4);
                             }
                         }
                     });
@@ -201,14 +222,26 @@ let vm = new Vue({
         handleReset: function (name) {
             handleResetForm(this, name);
         },
+        //获取所有商品
         getGoodss: function () {
             Ajax.request({
-                url: "../goods/queryAll/",
+                url:  '../goods/queryAll',
                 async: true,
                 successCallback: function (r) {
                     vm.goodss = r.list;
                 }
             });
+        },
+        //获取当个商品信息
+        getGoods: function () {
+            Ajax.request({
+                url:  '../goods/info/1155015?id=1155015',
+                async: true,
+                successCallback: function (r) {
+                   vm.goodss.add(r.goods);
+                }
+            });
         }
+
     }
 });

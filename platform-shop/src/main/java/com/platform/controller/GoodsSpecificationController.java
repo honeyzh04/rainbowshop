@@ -101,4 +101,6 @@ public class GoodsSpecificationController {
 
         return R.ok().put("list", list);
     }
+
+
 }

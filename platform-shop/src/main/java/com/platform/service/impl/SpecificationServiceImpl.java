@@ -1,5 +1,6 @@
 package com.platform.service.impl;
 
+import com.platform.entity.GoodsSpecificationEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,5 +51,8 @@ public class SpecificationServiceImpl implements SpecificationService {
 	public void deleteBatch(Integer[] ids){
 		specificationDao.deleteBatch(ids);
 	}
-	
+	@Override
+	public List<SpecificationEntity> queryGoodsSpecification(String goodsId) {
+		return specificationDao.queryGoodsSpecification(goodsId);
+	}
 }

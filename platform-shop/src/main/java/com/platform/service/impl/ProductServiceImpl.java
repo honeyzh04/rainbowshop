@@ -62,6 +62,11 @@ public class ProductServiceImpl implements ProductService {
                 result.add(item);
             }
         }
+        for ( ProductEntity a:result){
+            JSONObject jsonObject = JSONObject.fromObject( a);
+            System.err.println("a"+ jsonObject.toString());
+        }
+
         return result;
     }
 
@@ -70,6 +75,11 @@ public class ProductServiceImpl implements ProductService {
         return productDao.queryTotal(map);
     }
 
+    /**
+     * 添加商品下的产品
+     * @param product 实体
+     * @return
+     */
     @Override
     @Transactional
     public int save(ProductEntity product) {
